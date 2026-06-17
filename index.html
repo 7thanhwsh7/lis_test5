@@ -903,10 +903,12 @@ function calcScore(){
   return score;
 }
 
+let _submitted=false;
 function doSubmit(){
+  if(_submitted)return;
+  _submitted=true;
   closeModal('submit-modal');
   const score=calcScore();
-  // build answers json
   const out={};
   for(let i=1;i<=40;i++){
     const isPairA=PAIRS.some(p=>p.startsWith(i+'-'));
@@ -924,7 +926,6 @@ function doSubmit(){
     test_name:TEST_NAME,name:studentName,cls:studentClass,
     score:`${score}/40`,answers:JSON.stringify(out)
   });
-  fetch(`${SCRIPT_URL}?${params}`,{method:'GET',mode:'no-cors'}).catch(()=>{});
   new Image().src=`${SCRIPT_URL}?${params}`;
   // Save for review overlay — store both flat (per-question) and pair arrays
   submittedAnswers={...out};
