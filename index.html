@@ -1075,68 +1075,45 @@ mark.hl-pink   { background: var(--hl-pink);   border-radius: 2px; padding: 0 1p
 
       <div class="part-sep" style="margin:8px 48px 20px;height:1px;background:linear-gradient(90deg,rgba(212,175,55,0.3),transparent);"></div>
 
-      <div class="q-section-label">Questions 17–18 — Which TWO items should campers bring?</div>
+      <div class="q-section-label">Questions 17–18 — Choose TWO letters, A–E</div>
 
-      <!-- Q17-20 drag-drop layout -->
-      <div style="padding:0 48px 8px;">
-        <p style="font-size:0.8rem;color:var(--ink-soft);margin-bottom:12px;font-style:italic;">Kéo thả đáp án vào ô câu hỏi. Bấm ✕ để bỏ chọn.</p>
-      </div>
-
-      <!-- Q17-18 drag-drop -->
-      <div style="display:grid;grid-template-columns:1fr 260px;gap:16px;padding:0 48px 20px;align-items:start;">
-        <!-- Left: drop zones -->
-        <div>
-          <div id="anchor-17" style="scroll-margin-top:80px;display:flex;align-items:center;gap:10px;padding:8px 0;">
-            <span style="font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--gold);min-width:28px;">17</span>
-            <button class="q-flag-btn" data-q="17" onclick="toggleFlag(17)" style="opacity:0.4;font-size:11px;background:none;border:none;cursor:pointer;">🚩</button>
-            <span style="font-size:0.88rem;flex:1;">Items campers should bring <em>(choose TWO)</em></span>
-          </div>
-          <div id="anchor-18" style="scroll-margin-top:80px;"></div>
-          <div style="display:flex;gap:10px;margin-left:38px;">
-            <div class="drop-zone" data-group="17-18" data-slot="0" ondragover="event.preventDefault()" ondrop="handleDrop(event,'17-18',0)" onclick="clearSlot('17-18',0)" style="min-width:100px;min-height:36px;border:1.5px dashed rgba(212,175,55,0.5);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.85rem;color:var(--ink-soft);cursor:pointer;padding:4px 10px;background:#fafaf8;transition:background 0.2s;">—</div>
-            <div class="drop-zone" data-group="17-18" data-slot="1" ondragover="event.preventDefault()" ondrop="handleDrop(event,'17-18',1)" onclick="clearSlot('17-18',1)" style="min-width:100px;min-height:36px;border:1.5px dashed rgba(212,175,55,0.5);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.85rem;color:var(--ink-soft);cursor:pointer;padding:4px 10px;background:#fafaf8;transition:background 0.2s;">—</div>
-          </div>
-        </div>
-        <!-- Right: option chips -->
-        <div style="background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.18);border-radius:8px;padding:12px;">
-          <p style="font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(212,175,55,0.7);margin-bottom:8px;">Options</p>
-          <div id="opts-17-18" style="display:flex;flex-direction:column;gap:6px;">
-            <div class="drag-chip" draggable="true" data-val="A" data-group="17-18" ondragstart="handleDragStart(event,'17-18','A')" onclick="handleChipClick('17-18','A',this)" style="padding:6px 10px;background:#fff;border:1px solid rgba(212,175,55,0.25);border-radius:5px;cursor:grab;font-size:0.85rem;user-select:none;"><span style="color:var(--gold);font-weight:700;margin-right:6px;">A</span>earplugs</div>
-            <div class="drag-chip" draggable="true" data-val="B" data-group="17-18" ondragstart="handleDragStart(event,'17-18','B')" onclick="handleChipClick('17-18','B',this)" style="padding:6px 10px;background:#fff;border:1px solid rgba(212,175,55,0.25);border-radius:5px;cursor:grab;font-size:0.85rem;user-select:none;"><span style="color:var(--gold);font-weight:700;margin-right:6px;">B</span>sunscreen</div>
-            <div class="drag-chip" draggable="true" data-val="C" data-group="17-18" ondragstart="handleDragStart(event,'17-18','C')" onclick="handleChipClick('17-18','C',this)" style="padding:6px 10px;background:#fff;border:1px solid rgba(212,175,55,0.25);border-radius:5px;cursor:grab;font-size:0.85rem;user-select:none;"><span style="color:var(--gold);font-weight:700;margin-right:6px;">C</span>swimming toy</div>
-            <div class="drag-chip" draggable="true" data-val="D" data-group="17-18" ondragstart="handleDragStart(event,'17-18','D')" onclick="handleChipClick('17-18','D',this)" style="padding:6px 10px;background:#fff;border:1px solid rgba(212,175,55,0.25);border-radius:5px;cursor:grab;font-size:0.85rem;user-select:none;"><span style="color:var(--gold);font-weight:700;margin-right:6px;">D</span>torch</div>
-            <div class="drag-chip" draggable="true" data-val="E" data-group="17-18" ondragstart="handleDragStart(event,'17-18','E')" onclick="handleChipClick('17-18','E',this)" style="padding:6px 10px;background:#fff;border:1px solid rgba(212,175,55,0.25);border-radius:5px;cursor:grab;font-size:0.85rem;user-select:none;"><span style="color:var(--gold);font-weight:700;margin-right:6px;">E</span>boots</div>
+      <div class="q-block" id="anchor-17">
+        <div class="q-row">
+          <div class="q-num">17–18</div>
+          <button class="q-flag-btn" data-q="17" onclick="toggleFlag(17)">🚩</button>
+          <div class="q-content">
+            <div class="q-text">Which TWO items is it recommended that campers bring?</div>
+            <div class="mcq-options">
+              <label class="mcq-option"><input type="checkbox" name="q17-18" value="A" onchange="handleDual('17-18',this)" /><span class="mcq-label"><span class="mcq-key">A</span> earplugs</span></label>
+              <label class="mcq-option"><input type="checkbox" name="q17-18" value="B" onchange="handleDual('17-18',this)" /><span class="mcq-label"><span class="mcq-key">B</span> sunscreen</span></label>
+              <label class="mcq-option"><input type="checkbox" name="q17-18" value="C" onchange="handleDual('17-18',this)" /><span class="mcq-label"><span class="mcq-key">C</span> swimming toy</span></label>
+              <label class="mcq-option"><input type="checkbox" name="q17-18" value="D" onchange="handleDual('17-18',this)" /><span class="mcq-label"><span class="mcq-key">D</span> torch</span></label>
+              <label class="mcq-option"><input type="checkbox" name="q17-18" value="E" onchange="handleDual('17-18',this)" /><span class="mcq-label"><span class="mcq-key">E</span> boots</span></label>
+            </div>
           </div>
         </div>
       </div>
+      <div id="anchor-18" style="height:0;overflow:hidden;scroll-margin-top:80px;"></div>
 
-      <div class="q-section-label">Questions 19–20 — Which TWO are the most popular concert items?</div>
+      <div class="q-section-label">Questions 19–20 — Choose TWO letters, A–E</div>
 
-      <!-- Q19-20 drag-drop -->
-      <div style="display:grid;grid-template-columns:1fr 260px;gap:16px;padding:0 48px 20px;align-items:start;">
-        <div>
-          <div id="anchor-19" style="scroll-margin-top:80px;display:flex;align-items:center;gap:10px;padding:8px 0;">
-            <span style="font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--gold);min-width:28px;">19</span>
-            <button class="q-flag-btn" data-q="19" onclick="toggleFlag(19)" style="opacity:0.4;font-size:11px;background:none;border:none;cursor:pointer;">🚩</button>
-            <span style="font-size:0.88rem;flex:1;">Most popular concert items <em>(choose TWO)</em></span>
-          </div>
-          <div id="anchor-20" style="scroll-margin-top:80px;"></div>
-          <div style="display:flex;gap:10px;margin-left:38px;">
-            <div class="drop-zone" data-group="19-20" data-slot="0" ondragover="event.preventDefault()" ondrop="handleDrop(event,'19-20',0)" onclick="clearSlot('19-20',0)" style="min-width:100px;min-height:36px;border:1.5px dashed rgba(212,175,55,0.5);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.85rem;color:var(--ink-soft);cursor:pointer;padding:4px 10px;background:#fafaf8;transition:background 0.2s;">—</div>
-            <div class="drop-zone" data-group="19-20" data-slot="1" ondragover="event.preventDefault()" ondrop="handleDrop(event,'19-20',1)" onclick="clearSlot('19-20',1)" style="min-width:100px;min-height:36px;border:1.5px dashed rgba(212,175,55,0.5);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.85rem;color:var(--ink-soft);cursor:pointer;padding:4px 10px;background:#fafaf8;transition:background 0.2s;">—</div>
-          </div>
-        </div>
-        <div style="background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.18);border-radius:8px;padding:12px;">
-          <p style="font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(212,175,55,0.7);margin-bottom:8px;">Options</p>
-          <div id="opts-19-20" style="display:flex;flex-direction:column;gap:6px;">
-            <div class="drag-chip" draggable="true" data-val="A" data-group="19-20" ondragstart="handleDragStart(event,'19-20','A')" onclick="handleChipClick('19-20','A',this)" style="padding:6px 10px;background:#fff;border:1px solid rgba(212,175,55,0.25);border-radius:5px;cursor:grab;font-size:0.85rem;user-select:none;"><span style="color:var(--gold);font-weight:700;margin-right:6px;">A</span>acting</div>
-            <div class="drag-chip" draggable="true" data-val="B" data-group="19-20" ondragstart="handleDragStart(event,'19-20','B')" onclick="handleChipClick('19-20','B',this)" style="padding:6px 10px;background:#fff;border:1px solid rgba(212,175,55,0.25);border-radius:5px;cursor:grab;font-size:0.85rem;user-select:none;"><span style="color:var(--gold);font-weight:700;margin-right:6px;">B</span>dancing</div>
-            <div class="drag-chip" draggable="true" data-val="C" data-group="19-20" ondragstart="handleDragStart(event,'19-20','C')" onclick="handleChipClick('19-20','C',this)" style="padding:6px 10px;background:#fff;border:1px solid rgba(212,175,55,0.25);border-radius:5px;cursor:grab;font-size:0.85rem;user-select:none;"><span style="color:var(--gold);font-weight:700;margin-right:6px;">C</span>poetry recital</div>
-            <div class="drag-chip" draggable="true" data-val="D" data-group="19-20" ondragstart="handleDragStart(event,'19-20','D')" onclick="handleChipClick('19-20','D',this)" style="padding:6px 10px;background:#fff;border:1px solid rgba(212,175,55,0.25);border-radius:5px;cursor:grab;font-size:0.85rem;user-select:none;"><span style="color:var(--gold);font-weight:700;margin-right:6px;">D</span>singing</div>
-            <div class="drag-chip" draggable="true" data-val="E" data-group="19-20" ondragstart="handleDragStart(event,'19-20','E')" onclick="handleChipClick('19-20','E',this)" style="padding:6px 10px;background:#fff;border:1px solid rgba(212,175,55,0.25);border-radius:5px;cursor:grab;font-size:0.85rem;user-select:none;"><span style="color:var(--gold);font-weight:700;margin-right:6px;">E</span>storytelling</div>
+      <div class="q-block" id="anchor-19">
+        <div class="q-row">
+          <div class="q-num">19–20</div>
+          <button class="q-flag-btn" data-q="19" onclick="toggleFlag(19)">🚩</button>
+          <div class="q-content">
+            <div class="q-text">Which TWO does the organiser suggest are the most popular concert items?</div>
+            <div class="mcq-options">
+              <label class="mcq-option"><input type="checkbox" name="q19-20" value="A" onchange="handleDual('19-20',this)" /><span class="mcq-label"><span class="mcq-key">A</span> acting</span></label>
+              <label class="mcq-option"><input type="checkbox" name="q19-20" value="B" onchange="handleDual('19-20',this)" /><span class="mcq-label"><span class="mcq-key">B</span> dancing</span></label>
+              <label class="mcq-option"><input type="checkbox" name="q19-20" value="C" onchange="handleDual('19-20',this)" /><span class="mcq-label"><span class="mcq-key">C</span> poetry recital</span></label>
+              <label class="mcq-option"><input type="checkbox" name="q19-20" value="D" onchange="handleDual('19-20',this)" /><span class="mcq-label"><span class="mcq-key">D</span> singing</span></label>
+              <label class="mcq-option"><input type="checkbox" name="q19-20" value="E" onchange="handleDual('19-20',this)" /><span class="mcq-label"><span class="mcq-key">E</span> storytelling</span></label>
+            </div>
           </div>
         </div>
       </div>
+      <div id="anchor-20" style="height:0;overflow:hidden;scroll-margin-top:80px;"></div>
 
             <div class="part-nav-bar">
         <button class="btn-part-nav" onclick="switchPart(1)">← Part 1</button>
@@ -1157,86 +1134,65 @@ mark.hl-pink   { background: var(--hl-pink);   border-radius: 2px; padding: 0 1p
 
       <div class="q-section-label">Questions 21–22 — Choose TWO letters, A–E</div>
 
-      <div style="display:grid;grid-template-columns:1fr 300px;gap:16px;padding:0 48px 20px;align-items:start;">
-        <div>
-          <div id="anchor-21" style="scroll-margin-top:80px;display:flex;align-items:flex-start;gap:10px;padding:8px 0;">
-            <span style="font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--gold);min-width:28px;padding-top:2px;">21–22</span>
-            <button class="q-flag-btn" data-q="21" onclick="toggleFlag(21)" style="opacity:0.4;font-size:11px;background:none;border:none;cursor:pointer;padding-top:2px;">🚩</button>
-            <span style="font-size:0.88rem;line-height:1.6;">Which TWO points did students most frequently make about their musical background before starting a music degree?</span>
-          </div>
-          <div id="anchor-22" style="scroll-margin-top:80px;"></div>
-          <div style="display:flex;gap:10px;margin-left:38px;flex-wrap:wrap;">
-            <div class="drop-zone" data-group="21-22" data-slot="0" ondragover="event.preventDefault()" ondrop="handleDrop(event,'21-22',0)" onclick="clearSlot('21-22',0)" style="min-width:140px;min-height:36px;border:1.5px dashed rgba(212,175,55,0.5);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.85rem;color:var(--ink-soft);cursor:pointer;padding:4px 10px;background:#fafaf8;">—</div>
-            <div class="drop-zone" data-group="21-22" data-slot="1" ondragover="event.preventDefault()" ondrop="handleDrop(event,'21-22',1)" onclick="clearSlot('21-22',1)" style="min-width:140px;min-height:36px;border:1.5px dashed rgba(212,175,55,0.5);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.85rem;color:var(--ink-soft);cursor:pointer;padding:4px 10px;background:#fafaf8;">—</div>
-          </div>
-        </div>
-        <div style="background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.18);border-radius:8px;padding:12px;">
-          <p style="font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(212,175,55,0.7);margin-bottom:8px;">Options</p>
-          <div id="opts-21-22" style="display:flex;flex-direction:column;gap:6px;">
-            <div class="drag-chip" draggable="true" data-val="A" data-group="21-22" ondragstart="handleDragStart(event,'21-22','A')" onclick="handleChipClick('21-22','A',this)" style="padding:6px 10px;background:#fff;border:1px solid rgba(212,175,55,0.25);border-radius:5px;cursor:grab;font-size:0.83rem;user-select:none;"><span style="color:var(--gold);font-weight:700;margin-right:6px;">A</span>They had already composed music.</div>
-            <div class="drag-chip" draggable="true" data-val="B" data-group="21-22" ondragstart="handleDragStart(event,'21-22','B')" onclick="handleChipClick('21-22','B',this)" style="padding:6px 10px;background:#fff;border:1px solid rgba(212,175,55,0.25);border-radius:5px;cursor:grab;font-size:0.83rem;user-select:none;"><span style="color:var(--gold);font-weight:700;margin-right:6px;">B</span>They had several music qualifications.</div>
-            <div class="drag-chip" draggable="true" data-val="C" data-group="21-22" ondragstart="handleDragStart(event,'21-22','C')" onclick="handleChipClick('21-22','C',this)" style="padding:6px 10px;background:#fff;border:1px solid rgba(212,175,55,0.25);border-radius:5px;cursor:grab;font-size:0.83rem;user-select:none;"><span style="color:var(--gold);font-weight:700;margin-right:6px;">C</span>They could play more than one instrument.</div>
-            <div class="drag-chip" draggable="true" data-val="D" data-group="21-22" ondragstart="handleDragStart(event,'21-22','D')" onclick="handleChipClick('21-22','D',this)" style="padding:6px 10px;background:#fff;border:1px solid rgba(212,175,55,0.25);border-radius:5px;cursor:grab;font-size:0.83rem;user-select:none;"><span style="color:var(--gold);font-weight:700;margin-right:6px;">D</span>They had performed in public.</div>
-            <div class="drag-chip" draggable="true" data-val="E" data-group="21-22" ondragstart="handleDragStart(event,'21-22','E')" onclick="handleChipClick('21-22','E',this)" style="padding:6px 10px;background:#fff;border:1px solid rgba(212,175,55,0.25);border-radius:5px;cursor:grab;font-size:0.83rem;user-select:none;"><span style="color:var(--gold);font-weight:700;margin-right:6px;">E</span>They had had piano lessons.</div>
+      <div class="q-block" id="anchor-21">
+        <div class="q-row">
+          <div class="q-num">21–22</div>
+          <button class="q-flag-btn" data-q="21" onclick="toggleFlag(21)">🚩</button>
+          <div class="q-content">
+            <div class="q-text">Which TWO points did students most frequently make about their musical background before starting a music degree?</div>
+            <div class="mcq-options">
+              <label class="mcq-option"><input type="checkbox" name="q21-22" value="A" onchange="handleDual('21-22',this)" /><span class="mcq-label"><span class="mcq-key">A</span> They had already composed music.</span></label>
+              <label class="mcq-option"><input type="checkbox" name="q21-22" value="B" onchange="handleDual('21-22',this)" /><span class="mcq-label"><span class="mcq-key">B</span> They had several music qualifications.</span></label>
+              <label class="mcq-option"><input type="checkbox" name="q21-22" value="C" onchange="handleDual('21-22',this)" /><span class="mcq-label"><span class="mcq-key">C</span> They could play more than one instrument.</span></label>
+              <label class="mcq-option"><input type="checkbox" name="q21-22" value="D" onchange="handleDual('21-22',this)" /><span class="mcq-label"><span class="mcq-key">D</span> They had performed in public.</span></label>
+              <label class="mcq-option"><input type="checkbox" name="q21-22" value="E" onchange="handleDual('21-22',this)" /><span class="mcq-label"><span class="mcq-key">E</span> They had had piano lessons.</span></label>
+            </div>
           </div>
         </div>
       </div>
+      <div id="anchor-22" style="height:0;overflow:hidden;scroll-margin-top:80px;"></div>
 
       <div class="q-section-label">Questions 23–24 — Choose TWO letters, A–E</div>
 
-      <div style="display:grid;grid-template-columns:1fr 300px;gap:16px;padding:0 48px 20px;align-items:start;">
-        <div>
-          <div id="anchor-23" style="scroll-margin-top:80px;display:flex;align-items:flex-start;gap:10px;padding:8px 0;">
-            <span style="font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--gold);min-width:28px;padding-top:2px;">23–24</span>
-            <button class="q-flag-btn" data-q="23" onclick="toggleFlag(23)" style="opacity:0.4;font-size:11px;background:none;border:none;cursor:pointer;padding-top:2px;">🚩</button>
-            <span style="font-size:0.88rem;line-height:1.6;">Which TWO points did students most frequently make about music practice?</span>
-          </div>
-          <div id="anchor-24" style="scroll-margin-top:80px;"></div>
-          <div style="display:flex;gap:10px;margin-left:38px;flex-wrap:wrap;">
-            <div class="drop-zone" data-group="23-24" data-slot="0" ondragover="event.preventDefault()" ondrop="handleDrop(event,'23-24',0)" onclick="clearSlot('23-24',0)" style="min-width:140px;min-height:36px;border:1.5px dashed rgba(212,175,55,0.5);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.85rem;color:var(--ink-soft);cursor:pointer;padding:4px 10px;background:#fafaf8;">—</div>
-            <div class="drop-zone" data-group="23-24" data-slot="1" ondragover="event.preventDefault()" ondrop="handleDrop(event,'23-24',1)" onclick="clearSlot('23-24',1)" style="min-width:140px;min-height:36px;border:1.5px dashed rgba(212,175,55,0.5);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.85rem;color:var(--ink-soft);cursor:pointer;padding:4px 10px;background:#fafaf8;">—</div>
-          </div>
-        </div>
-        <div style="background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.18);border-radius:8px;padding:12px;">
-          <p style="font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(212,175,55,0.7);margin-bottom:8px;">Options</p>
-          <div id="opts-23-24" style="display:flex;flex-direction:column;gap:6px;">
-            <div class="drag-chip" draggable="true" data-val="A" data-group="23-24" ondragstart="handleDragStart(event,'23-24','A')" onclick="handleChipClick('23-24','A',this)" style="padding:6px 10px;background:#fff;border:1px solid rgba(212,175,55,0.25);border-radius:5px;cursor:grab;font-size:0.83rem;user-select:none;"><span style="color:var(--gold);font-weight:700;margin-right:6px;">A</span>They prefer to practise alone.</div>
-            <div class="drag-chip" draggable="true" data-val="B" data-group="23-24" ondragstart="handleDragStart(event,'23-24','B')" onclick="handleChipClick('23-24','B',this)" style="padding:6px 10px;background:#fff;border:1px solid rgba(212,175,55,0.25);border-radius:5px;cursor:grab;font-size:0.83rem;user-select:none;"><span style="color:var(--gold);font-weight:700;margin-right:6px;">B</span>They try to practise every day.</div>
-            <div class="drag-chip" draggable="true" data-val="C" data-group="23-24" ondragstart="handleDragStart(event,'23-24','C')" onclick="handleChipClick('23-24','C',this)" style="padding:6px 10px;background:#fff;border:1px solid rgba(212,175,55,0.25);border-radius:5px;cursor:grab;font-size:0.83rem;user-select:none;"><span style="color:var(--gold);font-weight:700;margin-right:6px;">C</span>They are motivated to practise by fear.</div>
-            <div class="drag-chip" draggable="true" data-val="D" data-group="23-24" ondragstart="handleDragStart(event,'23-24','D')" onclick="handleChipClick('23-24','D',this)" style="padding:6px 10px;background:#fff;border:1px solid rgba(212,175,55,0.25);border-radius:5px;cursor:grab;font-size:0.83rem;user-select:none;"><span style="color:var(--gold);font-weight:700;margin-right:6px;">D</span>They feel they don't do enough practice.</div>
-            <div class="drag-chip" draggable="true" data-val="E" data-group="23-24" ondragstart="handleDragStart(event,'23-24','E')" onclick="handleChipClick('23-24','E',this)" style="padding:6px 10px;background:#fff;border:1px solid rgba(212,175,55,0.25);border-radius:5px;cursor:grab;font-size:0.83rem;user-select:none;"><span style="color:var(--gold);font-weight:700;margin-right:6px;">E</span>They enjoy the challenge of a difficult piece.</div>
+      <div class="q-block" id="anchor-23">
+        <div class="q-row">
+          <div class="q-num">23–24</div>
+          <button class="q-flag-btn" data-q="23" onclick="toggleFlag(23)">🚩</button>
+          <div class="q-content">
+            <div class="q-text">Which TWO points did students most frequently make about music practice?</div>
+            <div class="mcq-options">
+              <label class="mcq-option"><input type="checkbox" name="q23-24" value="A" onchange="handleDual('23-24',this)" /><span class="mcq-label"><span class="mcq-key">A</span> They prefer to practise alone.</span></label>
+              <label class="mcq-option"><input type="checkbox" name="q23-24" value="B" onchange="handleDual('23-24',this)" /><span class="mcq-label"><span class="mcq-key">B</span> They try to practise every day.</span></label>
+              <label class="mcq-option"><input type="checkbox" name="q23-24" value="C" onchange="handleDual('23-24',this)" /><span class="mcq-label"><span class="mcq-key">C</span> They are motivated to practise by fear.</span></label>
+              <label class="mcq-option"><input type="checkbox" name="q23-24" value="D" onchange="handleDual('23-24',this)" /><span class="mcq-label"><span class="mcq-key">D</span> They feel they don't do enough practice.</span></label>
+              <label class="mcq-option"><input type="checkbox" name="q23-24" value="E" onchange="handleDual('23-24',this)" /><span class="mcq-label"><span class="mcq-key">E</span> They enjoy the challenge of a difficult piece.</span></label>
+            </div>
           </div>
         </div>
       </div>
+      <div id="anchor-24" style="height:0;overflow:hidden;scroll-margin-top:80px;"></div>
 
       <div class="q-section-label">Questions 25–26 — Choose TWO letters, A–E</div>
 
-      <div style="display:grid;grid-template-columns:1fr 300px;gap:16px;padding:0 48px 20px;align-items:start;">
-        <div>
-          <div id="anchor-25" style="scroll-margin-top:80px;display:flex;align-items:flex-start;gap:10px;padding:8px 0;">
-            <span style="font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--gold);min-width:28px;padding-top:2px;">25–26</span>
-            <button class="q-flag-btn" data-q="25" onclick="toggleFlag(25)" style="opacity:0.4;font-size:11px;background:none;border:none;cursor:pointer;padding-top:2px;">🚩</button>
-            <span style="font-size:0.88rem;line-height:1.6;">Which TWO points were most frequently made by students about the pieces they select for assessed performances?</span>
-          </div>
-          <div id="anchor-26" style="scroll-margin-top:80px;"></div>
-          <div style="display:flex;gap:10px;margin-left:38px;flex-wrap:wrap;">
-            <div class="drop-zone" data-group="25-26" data-slot="0" ondragover="event.preventDefault()" ondrop="handleDrop(event,'25-26',0)" onclick="clearSlot('25-26',0)" style="min-width:140px;min-height:36px;border:1.5px dashed rgba(212,175,55,0.5);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.85rem;color:var(--ink-soft);cursor:pointer;padding:4px 10px;background:#fafaf8;">—</div>
-            <div class="drop-zone" data-group="25-26" data-slot="1" ondragover="event.preventDefault()" ondrop="handleDrop(event,'25-26',1)" onclick="clearSlot('25-26',1)" style="min-width:140px;min-height:36px;border:1.5px dashed rgba(212,175,55,0.5);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.85rem;color:var(--ink-soft);cursor:pointer;padding:4px 10px;background:#fafaf8;">—</div>
-          </div>
-        </div>
-        <div style="background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.18);border-radius:8px;padding:12px;">
-          <p style="font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(212,175,55,0.7);margin-bottom:8px;">Options</p>
-          <div id="opts-25-26" style="display:flex;flex-direction:column;gap:6px;">
-            <div class="drag-chip" draggable="true" data-val="A" data-group="25-26" ondragstart="handleDragStart(event,'25-26','A')" onclick="handleChipClick('25-26','A',this)" style="padding:6px 10px;background:#fff;border:1px solid rgba(212,175,55,0.25);border-radius:5px;cursor:grab;font-size:0.83rem;user-select:none;"><span style="color:var(--gold);font-weight:700;margin-right:6px;">A</span>They like to hear others performing the same pieces.</div>
-            <div class="drag-chip" draggable="true" data-val="B" data-group="25-26" ondragstart="handleDragStart(event,'25-26','B')" onclick="handleChipClick('25-26','B',this)" style="padding:6px 10px;background:#fff;border:1px solid rgba(212,175,55,0.25);border-radius:5px;cursor:grab;font-size:0.83rem;user-select:none;"><span style="color:var(--gold);font-weight:700;margin-right:6px;">B</span>They like to choose little-known pieces.</div>
-            <div class="drag-chip" draggable="true" data-val="C" data-group="25-26" ondragstart="handleDragStart(event,'25-26','C')" onclick="handleChipClick('25-26','C',this)" style="padding:6px 10px;background:#fff;border:1px solid rgba(212,175,55,0.25);border-radius:5px;cursor:grab;font-size:0.83rem;user-select:none;"><span style="color:var(--gold);font-weight:700;margin-right:6px;">C</span>They like to play pieces from memory.</div>
-            <div class="drag-chip" draggable="true" data-val="D" data-group="25-26" ondragstart="handleDragStart(event,'25-26','D')" onclick="handleChipClick('25-26','D',this)" style="padding:6px 10px;background:#fff;border:1px solid rgba(212,175,55,0.25);border-radius:5px;cursor:grab;font-size:0.83rem;user-select:none;"><span style="color:var(--gold);font-weight:700;margin-right:6px;">D</span>They like their tutor to choose their pieces.</div>
-            <div class="drag-chip" draggable="true" data-val="E" data-group="25-26" ondragstart="handleDragStart(event,'25-26','E')" onclick="handleChipClick('25-26','E',this)" style="padding:6px 10px;background:#fff;border:1px solid rgba(212,175,55,0.25);border-radius:5px;cursor:grab;font-size:0.83rem;user-select:none;"><span style="color:var(--gold);font-weight:700;margin-right:6px;">E</span>They like to choose technically demanding pieces.</div>
+      <div class="q-block" id="anchor-25">
+        <div class="q-row">
+          <div class="q-num">25–26</div>
+          <button class="q-flag-btn" data-q="25" onclick="toggleFlag(25)">🚩</button>
+          <div class="q-content">
+            <div class="q-text">Which TWO points were most frequently made by students about the pieces they select for assessed performances?</div>
+            <div class="mcq-options">
+              <label class="mcq-option"><input type="checkbox" name="q25-26" value="A" onchange="handleDual('25-26',this)" /><span class="mcq-label"><span class="mcq-key">A</span> They like to hear others performing the same pieces.</span></label>
+              <label class="mcq-option"><input type="checkbox" name="q25-26" value="B" onchange="handleDual('25-26',this)" /><span class="mcq-label"><span class="mcq-key">B</span> They like to choose little-known pieces.</span></label>
+              <label class="mcq-option"><input type="checkbox" name="q25-26" value="C" onchange="handleDual('25-26',this)" /><span class="mcq-label"><span class="mcq-key">C</span> They like to play pieces from memory.</span></label>
+              <label class="mcq-option"><input type="checkbox" name="q25-26" value="D" onchange="handleDual('25-26',this)" /><span class="mcq-label"><span class="mcq-key">D</span> They like their tutor to choose their pieces.</span></label>
+              <label class="mcq-option"><input type="checkbox" name="q25-26" value="E" onchange="handleDual('25-26',this)" /><span class="mcq-label"><span class="mcq-key">E</span> They like to choose technically demanding pieces.</span></label>
+            </div>
           </div>
         </div>
       </div>
+      <div id="anchor-26" style="height:0;overflow:hidden;scroll-margin-top:80px;"></div>
 
-      <div class="q-section-label">Questions 27–30 — Choose FOUR answers, A–G</div>
+            <div class="q-section-label">Questions 27–30 — Choose FOUR answers, A–G</div>
 
       <div style="display:grid;grid-template-columns:1fr 280px;gap:16px;padding:0 48px 20px;align-items:start;">
         <div>
@@ -1515,11 +1471,11 @@ const CONFIG = {
     "6":  "artists",   "7":  "films",    "8":  "magazines","9": "number", "10": "maps",
     "11": "A",         "12": "C",        "13": "G",       "14": "D",
     "15": "F",         "16": "H",
-    "17-18": ["A","E"],
-    "19-20": ["B","D"],
-    "21-22": ["C","D"],
-    "23-24": ["C","E"],
-    "25-26": ["A","C"],
+    "17": "A",  "18": "E",
+    "19": "B",  "20": "D",
+    "21": "C",  "22": "D",
+    "23": "C",  "24": "E",
+    "25": "A",  "26": "C",
     "27": "B",  "28": "E",  "29": "G",  "30": "A",
     "31": "personal",  "32": "bridges",  "33": "wind",    "34": "weight",  "35": "sweetener",
     "36": "tank",      "37": "trial",    "38": "safety",  "39": "pressure","40": "license"
@@ -1954,8 +1910,10 @@ function getDisplayAnswer(n) {
     return Number(n) === a || Number(n) === b;
   });
   if (dualKey) {
-    const arr = state.answers[dualKey];
-    return arr && arr.length ? arr.join(', ') : '';
+    const [a] = dualKey.split('-').map(Number);
+    const arr = state.answers[dualKey] || [];
+    const slot = Number(n) === a ? 0 : 1;
+    return arr[slot] || '';
   }
   return state.answers[String(n)] || '';
 }
@@ -2039,18 +1997,23 @@ function calcScore() {
   const CA = CONFIG.CORRECT_ANSWERS;
 
   Object.entries(CA).forEach(([key, correct]) => {
-    const student = state.answers[key];
-    if (Array.isArray(correct)) {
-      // Dual: compare sorted arrays
-      if (Array.isArray(student)) {
-        const a = [...correct].map(x=>x.toLowerCase()).sort().join(',');
-        const b = [...student].map(x=>x.toLowerCase()).sort().join(',');
-        if (a === b) score += correct.length; // each item counts as 1 point
-      }
+    // Per-slot dual: key="17", answer stored in state.answers["17-18"][0]
+    const dualKey = CONFIG.DUAL_GROUPS.find(g => {
+      const [a, b] = g.split('-');
+      return a === key || b === key;
+    });
+    let student;
+    if (dualKey) {
+      const [a] = dualKey.split('-');
+      const arr = state.answers[dualKey] || [];
+      const slot = a === key ? 0 : 1;
+      student = arr[slot] || '';
     } else {
-      if (student && student.toString().toLowerCase().trim() === correct.toLowerCase().trim()) {
-        score++;
-      }
+      student = state.answers[key];
+    }
+
+    if (student && student.toString().toLowerCase().trim() === correct.toLowerCase().trim()) {
+      score++;
     }
   });
   return score;
@@ -2080,8 +2043,10 @@ async function submitExam() {
       return i === a || i === b;
     });
     if (dualKey) {
+      const [a] = dualKey.split('-').map(Number);
       const arr = state.answers[dualKey] || [];
-      flatAnswers[String(i)] = arr.join('/');
+      const slot = i === a ? 0 : 1;
+      flatAnswers[String(i)] = arr[slot] || '';
     } else {
       flatAnswers[String(i)] = state.answers[String(i)] || '';
     }
@@ -2427,5 +2392,3 @@ const _origGetDisplay = typeof getDisplayAnswer === 'function' ? getDisplayAnswe
 </script>
 </body>
 </html>
-  // Render drag-drop zones
-  if (typeof renderAllDropZones === 'function') renderAllDropZones();
